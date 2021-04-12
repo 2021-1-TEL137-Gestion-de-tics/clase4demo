@@ -18,9 +18,9 @@
                 <th>Región</th>
                 <th>Cantidad de empleados</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
+            <tr th:each="empleadoPorRegion : ${listaEmpleadosPorRegion}">
+                <td th:text="${empleadoPorRegion.getRegiondescription()}"></td>
+                <td th:text="${empleadoPorRegion.getCantidadempleados()}"></td>
             </tr>
         </table>
         <h4 class="mt-4">Cantidad de empleados por pais</h4>
