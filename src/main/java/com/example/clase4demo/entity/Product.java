@@ -14,7 +14,10 @@ public class Product {
     @Column(nullable = false)
     private String productname;
     private int supplierid;
-    private int categoryid;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
     private String quantityperunit;
     private BigDecimal unitprice;
     private int unitsinstock;
@@ -22,6 +25,7 @@ public class Product {
     private int reorderlevel;
     @Column(nullable = false)
     private boolean discontinued;
+
 
     public int getId() {
         return id;
@@ -47,12 +51,12 @@ public class Product {
         this.supplierid = supplierid;
     }
 
-    public int getCategoryid() {
-        return categoryid;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getQuantityperunit() {

@@ -1,5 +1,6 @@
 package com.example.clase4demo.controller;
 
+import com.example.clase4demo.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

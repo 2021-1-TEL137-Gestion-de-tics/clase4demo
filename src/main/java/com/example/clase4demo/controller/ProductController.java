@@ -1,6 +1,7 @@
 package com.example.clase4demo.controller;
 
 import com.example.clase4demo.entity.Product;
+import com.example.clase4demo.repository.CategoryRepository;
 import com.example.clase4demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @GetMapping(value = {"", "/"})
     public String listaProductos(Model model) {
         model.addAttribute("listaProductos", productRepository.findAll());
@@ -27,7 +31,8 @@ public class ProductController {
     }
 
     @GetMapping("/new")
-    public String nuevoProductoFrm() {
+    public String nuevoProductoFrm(Model model) {
+        model.addAttribute("listaCategorias",categoryRepository.findAll());
         return "product/newFrm";
     }
 
@@ -50,6 +55,7 @@ public class ProductController {
         if (optProduct.isPresent()) {
             Product product = optProduct.get();
             model.addAttribute("product", product);
+            model.addAttribute("listaCategorias",categoryRepository.findAll());
             return "product/editFrm";
         } else {
             return "redirect:/product";
