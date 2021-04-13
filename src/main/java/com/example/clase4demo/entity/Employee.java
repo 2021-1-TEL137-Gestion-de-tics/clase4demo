@@ -2,6 +2,7 @@ package com.example.clase4demo.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -12,28 +13,33 @@ public class Employee {
     @Column(name = "EmployeeID")
     private int id;
     @Column(nullable = false)
-    private String lastName;
+    private String lastname;
     @Column(nullable = false)
-    private String firstName;
+    private String firstname;
+
+    @ManyToMany(mappedBy = "empleadosPorTerritorio")
+    private List<Territory> territories;
+
+
     private String title;
-    private String titleOfCourtesy;
-    private Date birthDate;
-    private Date hireDate;
+    private String titleofcourtesy;
+    private Date birthdate;
+    private Date hiredate;
     private String address;
     private String city;
     private String region;
-    private String postalCode;
+    private String postalcode;
     private String country;
-    private String homePhone;
+    private String homephone;
     private String extension;
     @Lob
     private byte[] photo;
     @Column(nullable = false)
     private String notes;
     @OneToOne
-    @JoinColumn(name = "reportsTo")
+    @JoinColumn(name = "reportsto")
     private Employee manager;
-    private String photoPath;
+    private String photopath;
     private float salary;
 
     public int getId() {
@@ -44,52 +50,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getTitleOfCourtesy() {
-        return titleOfCourtesy;
-    }
-
-    public void setTitleOfCourtesy(String titleOfCourtesy) {
-        this.titleOfCourtesy = titleOfCourtesy;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getHireDate() {
-        return hireDate;
-    }
-
-    public void setHireDate(Date hireDate) {
-        this.hireDate = hireDate;
     }
 
     public String getAddress() {
@@ -116,13 +82,6 @@ public class Employee {
         this.region = region;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
 
     public String getCountry() {
         return country;
@@ -130,14 +89,6 @@ public class Employee {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
     }
 
     public String getExtension() {
@@ -172,12 +123,68 @@ public class Employee {
         this.manager = manager;
     }
 
-    public String getPhotoPath() {
-        return photoPath;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setPhotoPath(String photoPath) {
-        this.photoPath = photoPath;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getTitleofcourtesy() {
+        return titleofcourtesy;
+    }
+
+    public void setTitleofcourtesy(String titleofcourtesy) {
+        this.titleofcourtesy = titleofcourtesy;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public Date getHiredate() {
+        return hiredate;
+    }
+
+    public void setHiredate(Date hiredate) {
+        this.hiredate = hiredate;
+    }
+
+    public String getPostalcode() {
+        return postalcode;
+    }
+
+    public void setPostalcode(String postalcode) {
+        this.postalcode = postalcode;
+    }
+
+    public String getHomephone() {
+        return homephone;
+    }
+
+    public void setHomephone(String homephone) {
+        this.homephone = homephone;
+    }
+
+    public String getPhotopath() {
+        return photopath;
+    }
+
+    public void setPhotopath(String photopath) {
+        this.photopath = photopath;
     }
 
     public float getSalary() {
@@ -186,5 +193,13 @@ public class Employee {
 
     public void setSalary(float salary) {
         this.salary = salary;
+    }
+
+    public List<Territory> getTerritories() {
+        return territories;
+    }
+
+    public void setTerritories(List<Territory> territories) {
+        this.territories = territories;
     }
 }
