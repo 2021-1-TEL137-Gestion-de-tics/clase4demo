@@ -1,8 +1,10 @@
 package com.example.clase4demo.controller;
 
+import com.example.clase4demo.entity.Category;
 import com.example.clase4demo.entity.Employee;
 import com.example.clase4demo.entity.OrderDetails;
 import com.example.clase4demo.entity.Territory;
+import com.example.clase4demo.repository.CategoryRepository;
 import com.example.clase4demo.repository.EmployeeRepository;
 import com.example.clase4demo.repository.OrderDetailsRepository;
 import com.example.clase4demo.repository.TerritoryRepository;
@@ -24,8 +26,13 @@ public class HomeController {
     @Autowired
     OrderDetailsRepository orderDetailsRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @GetMapping("")
     public String index() {
+
+        List<Category> listaCategorias = categoryRepository.findAll();
 
         //List<Territory> listaTerritorios = territoryRepository.findAll();
 

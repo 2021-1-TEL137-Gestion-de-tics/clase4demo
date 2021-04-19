@@ -18,6 +18,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "categoryid")
     private Category category;
+
     private String quantityperunit;
     private BigDecimal unitprice;
     private int unitsinstock;

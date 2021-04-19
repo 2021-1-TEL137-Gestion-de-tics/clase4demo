@@ -1,6 +1,7 @@
 package com.example.clase4demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +17,10 @@ public class Category {
     private String description;
     @Lob
     private byte[] picture;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> listaProductosPorCategoria;
+
 
     public int getId() {
         return id;
@@ -47,5 +52,14 @@ public class Category {
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+
+    public List<Product> getListaProductosPorCategoria() {
+        return listaProductosPorCategoria;
+    }
+
+    public void setListaProductosPorCategoria(List<Product> listaProductosPorCategoria) {
+        this.listaProductosPorCategoria = listaProductosPorCategoria;
     }
 }
