@@ -14,5 +14,7 @@
         <div th:fragment="codigo1">
             <h4>Hola mundo</h4>
         </div>
+
+        <h1 th:fragment="transportista(ship,numero)" th:text="${ship.companyname + '@' + ship.phone + numero}"></h1>
     </body>
 </html>

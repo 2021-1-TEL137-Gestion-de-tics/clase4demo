@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
     <head th:replace="fragments/general.html :: cabecera(titulo = 'Lista Transportistas')">
     </head>
     <body class="container">
@@ -18,14 +20,16 @@
                 <th>Teléfono</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
             <tr th:each="shipper, info : ${shipperList}">
                 <td th:text="${info.index + 1}"></td>
                 <td th:text="${shipper.companyname}"></td>
                 <td th:text="${shipper.phone}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/shipper/edit' + '?id=' + ${shipper.shipperId}}">Editar</a>
+                <td th:insert="fragments/general.html :: transportista(ship = ${shipper}, numero = 5)"></td>
+                <td><a class="btn btn-primary" th:href="@{'/shipper/edit?id=' + ${shipper.shipperId}}">Editar</a>
                 </td>
-                <td><a class="btn btn-danger" th:href="@{'/shipper/delete' + '?id=' + ${shipper.shipperId}}">Borrar</a>
+                <td><a class="btn btn-danger" th:href="@{'/shipper/delete?id=' + ${shipper.shipperId}}">Borrar</a>
                 </td>
             </tr>
         </table>
