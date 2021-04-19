@@ -13,6 +13,17 @@
         <h2>Estadisticas empleados</h2>
         <hr/>
         <h4>Cantidad de empleados por región</h4>
+        <div class="row">
+            <div class="col-10">
+                <form method="post" th:action="@{/employee/BuscarEmpleadoRegion}">
+                    <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar Por Región"
+                           th:value="${nombreBusqueda}"/>
+                </form>
+            </div>
+            <div class="col-2">
+                <a th:href="@{/employee}" class="btn btn-outline-danger">Limpiar</a>
+            </div>
+        </div>
         <table class="table table-sm">
             <tr>
                 <th>Región</th>

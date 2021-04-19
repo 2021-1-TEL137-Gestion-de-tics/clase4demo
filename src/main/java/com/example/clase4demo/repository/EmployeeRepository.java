@@ -18,4 +18,13 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
             "         inner join employees e on (e.employeeid = et.employeeid)\n" +
             "group by r.regionid",nativeQuery = true)
     List<EmpleadosRegionDto> obtenerEmpleadosPorRegion();
+
+    @Query(value="select r.regionDescription as regiondescription, count(e.employeeid) as cantidadempleados\n" +
+            "FROM region r\n" +
+            "         inner join territories t on (r.regionid = t.regionid)\n" +
+            "         inner join employeeterritories et on (t.territoryid = et.territoryid)\n" +
+            "         inner join employees e on (e.employeeid = et.employeeid)\n" +
+            "         where r.regionDescription = ?1\n"+
+            "group by r.regionid",nativeQuery = true)
+    List<EmpleadosRegionDto> obtenerEmpleadosPorRegionPorNombre(String nombre);
 }
